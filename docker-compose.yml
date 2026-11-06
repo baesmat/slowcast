@@ -1,0 +1,16 @@
+services:
+  slowcast:
+    build: .
+    # image: ghcr.io/baesmat/slowcast:latest
+    ports:
+      - "8330:8330"
+    environment:
+      SC_TOKEN: ${SC_TOKEN:-change-me}
+      # SC_PUBLIC_URL: https://slowcast.example.com
+      # SC_VOICE: en-GB-SoniaNeural
+    volumes:
+      - slowcast-data:/data
+    restart: unless-stopped
+
+volumes:
+  slowcast-data:
